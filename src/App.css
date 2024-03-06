@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,52 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.App {
+  text-align: left;
+  margin-top: 50px;
+}
+.header {
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  gap: 20px;
+  height: 40px;
+  margin-left: 40px;
+}
+
+.field__add {
+  border-radius: 10px;
+  /* width: fit-content; */
+}
+
+.add {
+  border-radius: 10px;
+}
+
+.completed {
+  display: flex;
+  margin-left: 40px;
+  margin-top: 30px;
+  border-radius: 10px;
+  height: 40px;
+  align-items: center;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 40px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
 }
