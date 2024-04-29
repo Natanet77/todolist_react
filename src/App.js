@@ -3,49 +3,50 @@ import "./App.css";
 
 const App = () => {
   const [todoList, setTodoList] = useState([]);
-  const [newTodo, setNewTodo] = useState("");
+  const [newItemTitle, setNewItemTitle] = useState("");
 
   const addTodo = () => {
-    setTodoList([...todoList, { text: newTodo, completed: false }]);
-    setNewTodo("");
+    setTodoList([...todoList, { text: newItemTitle, completed: false }]);
+    setNewItemTitle("");
   };
 
-  const removeTodo = (index) => {
+  const removeTodo = (id) => {
     const updatedList = [...todoList];
-    updatedList.splice(index, 1);
+    updatedList.splice(id, 1);
     return setTodoList(updatedList);
   };
 
-  const toggleCompletion = (index) => {
+  const toggleCompletion = (id) => {
     const updatedList = [...todoList];
-    if ((updatedList[index].completed = !updatedList[index].completed)) {
+    if ((updatedList[id].completed = !updatedList[id].completed)) {
       return setTodoList(updatedList);
     }
   };
 
   return (
     <div className="App">
-      <h1 className="header">TODO List</h1>
-      <div className="field">
+      <h1 className="App-header">TODO List</h1>
+
+      <div className="todo-form">
         <input
-          className="field__add"
+          className="todo-form-field"
           type="text"
           placeholder="Type new item..."
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
+          value={newItemTitle}
+          onChange={(e) => setNewItemTitle(e.target.value)}
         />
-        <button className="add" onClick={addTodo}>
+        <button className="todo-add" onClick={addTodo}>
           Add
         </button>
       </div>
-      <button className="completed">Show/hide completed</button>
-      <ul className="items">
-        {todoList.map((todo, index) => (
-          <li key={index}>
+      <button className="todo-completed">Show/hide completed</button>
+      <ul className="todo-items">
+        {todoList.map((todo, id) => (
+          <li key={id}>
             <input
               type="checkbox"
               checked={todo.completed}
-              onChange={() => toggleCompletion(index)}
+              onChange={() => toggleCompletion(id)}
             />
             <span
               style={{
@@ -54,7 +55,7 @@ const App = () => {
             >
               {todo.text}
             </span>
-            <button onClick={() => removeTodo(index)}>X</button>
+            <button onClick={() => removeTodo(id)}>X</button>
           </li>
         ))}
       </ul>
